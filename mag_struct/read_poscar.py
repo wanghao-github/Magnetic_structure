@@ -1,4 +1,5 @@
 import os
+from spglib import get_symmetry_dataset
 
 class CrystalStructure:
     def __init__(self, lattice_matrix, atom_positions, atom_symbols, atom_types):
@@ -22,7 +23,7 @@ class CrystalStructure:
             atom_symbols = []
             atom_types = []
             atom_symbols.append(lines[5].split())
-            atom_types.append(lines[6].split())
+            atom_types.append(float(lines[6].split()))
             for i in range(8, 8 + num_atoms):
                 data = lines[i].split()
                 atom_positions.append([float(data[j]) for j in range(3)])
