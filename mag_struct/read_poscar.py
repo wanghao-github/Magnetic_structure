@@ -51,7 +51,7 @@ position = crystal.atom_positions
 types = crystal.atom_types
 symprec = 1e-3
 
-cell = lattice, position, types
+cell = (lattice, position, types)
 dataset = get_symmetry_dataset(cell, symprec=symprec)
 
 print("Lattice:", lattice)
