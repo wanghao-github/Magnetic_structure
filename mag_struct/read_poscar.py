@@ -23,7 +23,7 @@ class CrystalStructure:
             atom_symbols = []
             atom_types = []
             atom_symbols.append(lines[5].split())
-            atom_types.extend([float(element) for element in lines[6].split()])
+            atom_types.extend([int(element) for element in lines[6].split()])
             for i in range(8, 8 + num_atoms):
                 data = lines[i].split()
                 atom_positions.append([float(data[j]) for j in range(3)])
