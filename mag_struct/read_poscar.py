@@ -72,6 +72,8 @@ print("Position:", position)
 print("Types:", types)
 print("magmoms:", magmoms)
 print("Cell:", cell)
+
+print("Mag symmetry:",symmetry)
 # # print("dataset:", dataset)
 # # print(f'International symbol: {dataset["international"]} ({dataset["number"]})')
 # # print(f'Hall symbol: {dataset["hall"]}')
