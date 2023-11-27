@@ -17,7 +17,6 @@ class CrystalStructure:
                               [float(lines[3].split()[i]) for i in range(3)],
                               [float(lines[4].split()[i]) for i in range(3)]]
 
-            # 提取原子坐标和元素符号
             num_atoms = sum([int(x) for x in lines[6].split()])
             atom_positions = []
             atom_symbols = []
@@ -30,11 +29,9 @@ class CrystalStructure:
 
         return cls(lattice_matrix, atom_positions, atom_symbols, atom_types)
 
-# 例子：假设POSCAR文件在当前目录下，文件名为"POSCAR"
 poscar_file_path = "POSCAR"
 crystal = CrystalStructure.from_POSCAR(poscar_file_path)
 
-# 访问晶体结构的属性
 print("Lattice Matrix:")
 for row in crystal.lattice_matrix:
     print(row)
@@ -45,6 +42,3 @@ for position in crystal.atom_positions:
 
 print("Atom Symbols:", crystal.atom_symbols)
 print("Atom Types:", crystal.atom_types)
-
-
-    
