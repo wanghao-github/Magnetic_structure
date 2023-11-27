@@ -49,10 +49,15 @@ print("Atom Types:", crystal.atom_types)
 lattice = crystal.lattice_matrix
 position = crystal.atom_positions
 types = crystal.atom_types
-symprec = 1e-5
+symprec = 1e-3
 
 cell = lattice, position, types
 dataset = get_symmetry_dataset(cell, symprec=symprec)
+
+print("Lattice:", lattice)
+print("Position:", position)
+print("Types:", types)
+
 
 print(f'International symbol: {dataset["international"]} ({dataset["number"]})')
 print(f'Hall symbol: {dataset["hall"]}')
