@@ -1,6 +1,6 @@
 import os
 from spglib import get_symmetry_dataset
-
+from spglib import get_magnetic_symmetry
 class CrystalStructure:
     def __init__(self, lattice_matrix, atom_positions, atom_symbols, atom_types):
         self.lattice_matrix = lattice_matrix
@@ -52,26 +52,37 @@ print("Atom Types:", crystal.atom_types)
 lattice = crystal.lattice_matrix
 position = crystal.atom_positions
 types = crystal.atom_types
+magmoms = [[0,0,5],[0,0,-5],[0,0,0],[0,0,0],[0,0,0]]
 symprec = 1e-3
 
-cell = (lattice, position, types)
-dataset = get_symmetry_dataset(cell, symprec=symprec)
 
+
+cell = (lattice, position, types, magmoms)
+# dataset = get_symmetry_dataset(cell, symprec=symprec)
+symmetry = get_magnetic_symmetry(
+    cell,
+    symprec=1e-5,
+    angle_tolerance=-1.0,
+    mag_symprec=-1.0,
+    is_axial=None,
+    with_time_reversal=True,
+)
 print("Lattice:", lattice)
 print("Position:", position)
 print("Types:", types)
+print("magmoms:", magmoms)
 print("Cell:", cell)
-print("dataset:", dataset)
-print(f'International symbol: {dataset["international"]} ({dataset["number"]})')
-print(f'Hall symbol: {dataset["hall"]}')
-print("Wyckoff letters: ", end="")
-print(" ".join([f"{w}" for w in dataset["wyckoffs"]]))
-print("Equivalent atoms:")
-for i, equiv_atom in enumerate(dataset["equivalent_atoms"]):
-    print(f"{i} -> {equiv_atom}")
-print("Space group operations:")
-for i, (r, t) in enumerate(zip(dataset["rotations"], dataset["translations"])):
-    print(f"--- {i + 1} ---")
-    for vec in r:
-        print(f"{vec[0]:2d} {vec[1]:2d} {vec[2]:2d}")
-    print(f"{t[0]:.5f} {t[1]:.5f} {t[2]:.5f}")
+# # print("dataset:", dataset)
+# # print(f'International symbol: {dataset["international"]} ({dataset["number"]})')
+# # print(f'Hall symbol: {dataset["hall"]}')
+# print("Wyckoff letters: ", end="")
+# print(" ".join([f"{w}" for w in dataset["wyckoffs"]]))
+# print("Equivalent atoms:")
+# for i, equiv_atom in enumerate(dataset["equivalent_atoms"]):
+#     print(f"{i} -> {equiv_atom}")
+# print("Space group operations:")
+# for i, (r, t) in enumerate(zip(dataset["rotations"], dataset["translations"])):
+#     print(f"--- {i + 1} ---")
+#     for vec in r:
+#         print(f"{vec[0]:2d} {vec[1]:2d} {vec[2]:2d}")
+#     print(f"{t[0]:.5f} {t[1]:.5f} {t[2]:.5f}")
