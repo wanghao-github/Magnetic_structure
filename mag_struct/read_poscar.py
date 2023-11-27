@@ -18,15 +18,35 @@ class CrystalStructure:
                               [float(lines[3].split()[i]) for i in range(3)],
                               [float(lines[4].split()[i]) for i in range(3)]]
 
+            # num_atoms = sum([int(x) for x in lines[6].split()])
+            # atom_positions = []
+            # atom_symbols = []
+            # atom_types = []
+            # atom_symbols.append(lines[5].split())
+            # atom_types.extend([int(element) for element in lines[6].split()])
+            # for i in range(8, 8 + num_atoms):
+            #     data = lines[i].split()
+            #     atom_positions.append([float(data[j]) for j in range(3)])
+
             num_atoms = sum([int(x) for x in lines[6].split()])
             atom_positions = []
-            atom_symbols = []
+            atom_symbols = lines[5].split()
             atom_types = []
-            atom_symbols.append(lines[5].split())
-            atom_types.extend([int(element) for element in lines[6].split()])
+
+            atom_type_counts = [int(x) for x in lines[6].split()]
+            current_type_index = 0
+
             for i in range(8, 8 + num_atoms):
                 data = lines[i].split()
                 atom_positions.append([float(data[j]) for j in range(3)])
+
+            # Update the atom_types list based on the current type index
+                atom_types.append(current_type_index + 1)
+
+            # Check if we have reached the end of the current type
+                if len(atom_positions) == sum(atom_type_counts[:current_type_index + 1]):
+                    current_type_index += 1
+
 
         return cls(lattice_matrix, atom_positions, atom_symbols, atom_types)
 
