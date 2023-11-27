@@ -1,6 +1,7 @@
 import os
 from spglib import get_symmetry_dataset
 from spglib import get_magnetic_symmetry
+from spglib import get_magnetic_symmetry_dataset
 class CrystalStructure:
     def __init__(self, lattice_matrix, atom_positions, atom_symbols, atom_types):
         self.lattice_matrix = lattice_matrix
@@ -67,14 +68,22 @@ symmetry = get_magnetic_symmetry(
     is_axial=None,
     with_time_reversal=True,
 )
+dataset = get_magnetic_symmetry_dataset(
+    cell,
+    is_axial=None,
+    symprec=1e-5,
+    angle_tolerance=-1.0,
+    mag_symprec=-1.0,
+)
+
 print("Lattice:", lattice)
 print("Position:", position)
 print("Types:", types)
 print("magmoms:", magmoms)
 print("Cell:", cell)
 
-print("Mag symmetry:",symmetry)
-# # print("dataset:", dataset)
+# print("Mag symmetry:",symmetry)
+print("dataset:", dataset)
 # # print(f'International symbol: {dataset["international"]} ({dataset["number"]})')
 # # print(f'Hall symbol: {dataset["hall"]}')
 # print("Wyckoff letters: ", end="")
