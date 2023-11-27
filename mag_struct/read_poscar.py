@@ -57,8 +57,8 @@ dataset = get_symmetry_dataset(cell, symprec=symprec)
 print("Lattice:", lattice)
 print("Position:", position)
 print("Types:", types)
-
-
+print("Cell:", cell)
+print("dataset:", dataset)
 print(f'International symbol: {dataset["international"]} ({dataset["number"]})')
 print(f'Hall symbol: {dataset["hall"]}')
 print("Wyckoff letters: ", end="")
