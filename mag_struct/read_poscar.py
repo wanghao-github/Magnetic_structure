@@ -84,7 +84,7 @@ print("Cell:", cell)
 
 # print("Mag symmetry:",symmetry)
 print("dataset:", dataset)
-print("uni_number", dataset["uni_number"]}))
+print("uni_number", {dataset["uni_number"]}))
 # # print(f'International symbol: {dataset["international"]} ({dataset["number"]})')
 # # print(f'Hall symbol: {dataset["hall"]}')
 # print("Wyckoff letters: ", end="")
