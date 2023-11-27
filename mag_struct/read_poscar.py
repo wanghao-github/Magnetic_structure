@@ -35,7 +35,7 @@ crystal = CrystalStructure.from_POSCAR(poscar_file_path)
 print("Lattice Matrix:")
 for row in crystal.lattice_matrix:
     print(row)
-
+print(crystal.lattice_matrix)
 print("Atom Positions:")
 for position in crystal.atom_positions:
     print(position)
