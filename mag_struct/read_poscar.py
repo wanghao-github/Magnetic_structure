@@ -53,7 +53,7 @@ print("Atom Types:", crystal.atom_types)
 lattice = crystal.lattice_matrix
 position = crystal.atom_positions
 types = crystal.atom_types
-magmoms = [[0,0,-1],[0,0,2],[0,0,0],[0,0,0],[0,0,0]]
+magmoms = [[0,2,0],[0,0,2],[0,0,0],[0,0,0],[0,0,0]]
 symprec = 1e-3
 
 
